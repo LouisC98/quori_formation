@@ -1,13 +1,17 @@
 /* theme */
 
 :root {
-    --primary: #12CBC4;
-    --primary-light: #e7f9f9;
+    --primary: #B92B27;
+        --primary-light: #beacab;
     --accent: #0652dd;
     --warning: #ea2027;
     --success: #009432;
     --font-family: 'Open Sans', sans-serif;
     --font-size-small: 15px;
+    --font-size-regular: 16px;
+        --font-weight-regular: 400;
+        --font-weight-semi-bold: 600;
+        --font-weight-bold: 700;
     --box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     --border-radius: 3px;
     --border: 1px solid #ddd;
@@ -129,6 +133,9 @@ a {
 .mr-50 {
     margin-right: 50px;
 }
+.mb-20 {
+    margin-bottom: 20px;
+}
 /* Paddings */
 .p-5 {
     padding: 5px;
@@ -160,6 +167,9 @@ ul {
     max-width: var(--max-width);
 }
 
+.app-content {
+    background-color: var(--gray-light);
+}
 .btn {
     border-radius: var(--border-radius);
     padding: 10px 20px;
@@ -186,6 +196,44 @@ ul {
     border: 1px solid var(--primary);
     color: var(--primary);
     background-color: var(--color-primary);
+}
+.block {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background-color: white;
+    box-shadow: var(--box-shadow);
+}
+
+.form-row {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    margin-bottom: 5px;
+    font-weight: var(--font-weight-semi-bold);
+    color: var(--color-dark);
+}
+
+.form-row input,
+textarea {
+    border: 0;
+    border-radius: var(--border-radius);
+    padding: 10px 15px;
+    background-color: var(--gray-light);
+    font-family: var(--font-family);
+    font-size: var(--font-size-regular);
+}
+
+.form-row textarea {
+    min-height: 150px;
+}
+
+.form-errors {
+    color: var(--warning);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-semi-bold);
 }
 
 /* Header */
@@ -237,6 +285,8 @@ header {
 }
 
 .active {
+    font-weight: 700;
+        color: white;
     border-left: 5px solid var(--primary);
     background-color: var(--primary-light);
 }
