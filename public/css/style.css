@@ -144,6 +144,13 @@ small {
 .mb-20 {
     margin-bottom: 20px;
 }
+.mr-10 {
+    margin-right: 10px;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
 /* Paddings */
 .p-5 {
     padding: 5px;
@@ -157,6 +164,9 @@ small {
     padding: 20px;
 }
 
+.pb-30 {
+    padding-bottom: 30px;
+}
 .py-20 {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -166,11 +176,15 @@ small {
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
 .pb-20 {
     padding-bottom: 20px;
 }
 
-
+.separator {
+    border-bottom: 1px solid var(--gray-light);
+    margin: 30px 0;
+}
 /* General */
 .content {
     max-width: var(--max-width);
@@ -291,7 +305,16 @@ header {
     box-shadow: var(--box-shadow);
 }
 
+/* Message flash */
+.flash {
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
 
+.flash-success {
+    background-color: var(--success);
+}
 
 /* Sidebar */
 .sidebar {
