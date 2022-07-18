@@ -28,7 +28,10 @@ Connexion
                 <li>{{error.messageKey | trans(error.messageData, 'security')}}</li>
             </ul>
             {% endif %}
-            <button class="btn btn-primary">Connexion</button>
+            <button class="btn btn-primary mr-10">Connexion</button>
+            <small>
+                <a href="{{ path('signup') }}">Vous n'avez pas encore de compte ?</a>
+            </small>
         </form>
     </div>
 {% endblock body %}

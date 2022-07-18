@@ -15,32 +15,38 @@
         {% include "partials/_rating.html.twig" with {rating: question.rating, from: 'question', id: question.id} %}
         <h3 class="mr-10">{{question.title}}</h3>
         <div class="question-tag">QUESTION</div>
-        <img src="https://randomuser.me/api/portraits/men/26.jpg" alt="" class="avatar ml-auto">
+        <img src="{{question.author.image}}" alt="" class="avatar ml-auto">
     </div>
     <p class="question-text">{{question.content}}</p>
-    <div class="separator"></div>
-    <div class="pb-20">
+{% if question.comments is not empty %}
+        <div class="separator"></div>
+    {% endif %}
+    {# <div class="pb-20">
         Nombre de réponses: {{question.comments | length}}
-    </div>
+    </div> #}
     {% for comment in question.comments %}
     <div class="d-flex flex-row-nowrap mb-20">
         {% include "partials/_rating.html.twig" with {rating: comment.rating, from: 'comment', id: comment.id} %}
         <div class="d-flex flex-column flex-fill">
             <div class="d-flex flex-row-nowrap align-items-center pb-10">
-                <img class="avatar mr-10" src="https://randomuser.me/api/portraits/women/50.jpg" alt="user-picture">
-                <p class="clickable">Jean-Louis</p>
+                <img class="avatar mr-10" src="{{comment.author.image}}" alt="user-picture">
+                <p class="clickable">{{comment.author.fullname}}</p>
                 <small class="ml-auto">{{ comment.createdAt | format_datetime(pattern = 'd/MM/Y', locale = 'fr') }}</small>
             </div>
             <p class="question-reponse-text">{{comment.content}}</p>
         </div>
     </div>
     {% endfor %}
-    <h3 class="pb-20">Votre réponse</h3>
-    <div class="comment-form">
-        {{form_start(form)}}
-        {{form_rest(form)}}
-        <button class="btn btn-primary">Soumettre</button>
-        {{form_end(form)}}
-    </div>
+{% if form is defined %}
+<div class="separator"></div>
+        <h3 class="pb-20">Votre réponse</h3>
+        <div class="comment-form">
+            {{form_start(form)}}
+            {{form_rest(form)}}
+            <button class="btn btn-primary">Soumettre</button>
+            {{form_end(form)}}
+        </div>
+    {% endif %}
+
 </div>
 {% endblock body %}
