@@ -12,7 +12,7 @@ class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(QuestionRepository $questionRepo): Response
     {
-        $questions = $questionRepo->findAll();
+        $questions = $questionRepo->findBy([], ['createdAt' => 'DESC']);
         
 
         return $this->render('home/index.html.twig', [
