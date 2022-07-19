@@ -144,6 +144,9 @@ small {
 .mb-20 {
     margin-bottom: 20px;
 }
+.mb-10 {
+    margin-bottom: 10px;
+}
 .mr-10 {
     margin-right: 10px;
 }
@@ -359,6 +362,11 @@ header {
 
 .rating-down {
     color: var(--warning);
+}
+/* Profile */
+.profile-picture {
+    width: 150px;
+    border-radius: var(--border-radius);
 }
 /* Footer */
 footer {
