@@ -50,9 +50,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Comment::class, orphanRemoval: true)]
     private $comments;
 
+    // #[Assert\Url(message: "Votre image doit provenir d'une URL")]
+    // #[Assert\NotBlank(message: "Veuillez entrer l'url de votre image")]
+
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\Url(message: "Votre image doit provenir d'une URL")]
-    #[Assert\NotBlank(message: "Veuillez entrer l'url de votre image")]
     private $image;
 
     #[ORM\OneToMany(mappedBy: 'author', targetEntity: Vote::class, orphanRemoval: true)]

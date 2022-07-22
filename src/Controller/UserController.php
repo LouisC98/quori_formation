@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\UploaderPicture;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,14 +20,14 @@ class UserController extends AbstractController
 {
     #[Route('/', name: 'current_user')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function currentUserProfile(Request $request, UserPasswordHasherInterface $passwordHasheur, EntityManagerInterface $em): Response
+    public function currentUserProfile(Request $request, UserPasswordHasherInterface $passwordHasheur, EntityManagerInterface $em, UploaderPicture $uploaderPicture): Response
     {
         /**
          * @var User
          */
         $user = $this->getUser();
 
-        $userFormProfile = $this->createForm(UserType::class, $user);
+        $userFormProfile = $this->createForm(UserType::class, $user, ['new_user' => false]);
         $userFormProfile->remove('password');
         $userFormProfile->add(
             'newPassword',
@@ -44,6 +45,11 @@ class UserController extends AbstractController
             if ($newPassword) {
                 $hash = $passwordHasheur->hashPassword($user, $newPassword);
                 $user->setPassword($hash);
+            }
+
+            $newPicture = $userFormProfile->get('pictureFile')->getData();
+            if ($newPicture) {
+                $user->setImage($uploaderPicture->uploadProfileImage($newPicture, $user->getImage()));
             }
 
             $em->flush();
