@@ -1,0 +1,34 @@
+@use '../mixins';
+
+/* Sidebar */
+.sidebar {
+    min-width: 200px;
+    margin-right: 50px;
+
+    @include mixins.xs {
+        margin-right: 0;
+    }
+}
+
+.sidebar-nav a {
+    padding: 10px;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    display: block;
+}
+
+.sidebar-nav a:hover {
+    transition: opacity .4s;
+    opacity: .8;
+}
+
+.sidebar-nav a i {
+    color: var(--color-dark);
+}
+
+.active {
+    font-weight: 700;
+    color: white;
+    border-left: 5px solid var(--primary);
+    background-color: var(--primary-light);
+}

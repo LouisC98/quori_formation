@@ -2,8 +2,13 @@
 
 {% block stylesheets %}
 {{parent()}}
-<link rel="stylesheet" href="{{asset('css/question_show.css')}}">
+{{ encore_entry_link_tags('question') }}
 {% endblock stylesheets %}
+
+{% block javascripts %}
+{{parent()}}
+{{ encore_entry_script_tags('question') }}
+{% endblock javascripts %}
 
 {% block title %}
 {{question.title}}
@@ -13,9 +18,11 @@
 <div class="block">
     <div class="d-flex flex-row-nowrap align-items-center pb-30">
         {% include "partials/_rating.html.twig" with {rating: question.rating, from: 'question', id: question.id} %}
-        <h3 class="mr-10">{{question.title}}</h3>
-        <div class="question-tag">QUESTION</div>
-        <img src="{{asset(question.author.image)}}" alt="picture profile" class="avatar ml-auto">
+        <div class="d-flex flex-row-nowrap align-items-center justify-content-between flex-fill flex-column-xs">
+            <h3 class="mr-10">{{question.title}}</h3>
+            <div class="question-tag">QUESTION</div>
+            <img src="{{asset(question.author.image)}}" alt="picture profile" class="avatar ml-auto">
+        </div>
     </div>
     <p class="question-text">{{question.content}}</p>
 {% if question.comments is not empty %}
