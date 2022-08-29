@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 class UploaderPicture
@@ -28,6 +27,6 @@ class UploaderPicture
         }
 
         // return $this->container->getParameter('profile.folder.public_path') . '/' . $filename;
-        return $this->$profileFolderPublic . '/' . $filename;
+        return $this->profileFolderPublic . '/' . $filename;
     }
 }
